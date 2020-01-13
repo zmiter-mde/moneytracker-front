@@ -1,8 +1,9 @@
 {
-  "name": "movies-tracker",
+  "name": "moneytracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.8.3",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

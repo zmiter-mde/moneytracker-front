@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
-class AppHeader extends React.Component {
+import styles from './AppHeader.module.scss';
+
+class AppHeader extends Component {
 
   render() {
-    return <div >
-      <Link to="/">App Title</Link>
-      <div>
-        {
-          this.props.authenticated ? <>
-            <Link to="/profile">Profile</Link>
-            <span onClick={this.props.onLogout} color="primary">Logout</span>
-          </> : <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-          </>
-        }
-      </div>
-    </div>;
+    const { authenticated, onLogout } = this.props;
+
+    return (
+      <AppBar position="relative" className={styles.appHeader}>
+        <Toolbar>
+          <Link to="/"><Typography variant="h5" color="primary">Money Tracker</Typography></Link>
+          <div className={styles.actionsContainer}>
+            { authenticated ? <React.Fragment>
+              <NavLink to="/profile" className={styles.actionButton}><Typography variant="button" color="primary">Profile</Typography></NavLink>
+              <Typography variant="button" onClick={onLogout} color="primary" className={styles.actionButton}>Logout</Typography>
+            </React.Fragment> : <React.Fragment>
+              <NavLink to="/login" className={styles.actionButton}><Typography variant="button" color="primary">Login</Typography></NavLink>
+              <NavLink to="/signup" className={styles.actionButton}><Typography variant="button" color="primary">Sign Up</Typography></NavLink>
+            </React.Fragment> }
+          </div>
+        </Toolbar>
+      </AppBar>
+    );
   }
 }
 

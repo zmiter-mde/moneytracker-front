@@ -1,0 +1,16 @@
+.appHeader {
+  background: transparent !important;
+  color: #fff;
+  margin-bottom: 10px;
+
+  .actionsContainer {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+
+    .actionButton {
+      cursor: pointer;
+      padding: 5px;
+    }
+  }
+}
